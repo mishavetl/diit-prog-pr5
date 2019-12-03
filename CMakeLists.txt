@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 project(lr5)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 file(GLOB_RECURSE SRCS
     "include/*.h"

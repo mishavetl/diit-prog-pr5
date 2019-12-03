@@ -8,3 +8,8 @@ bool operator<(const lr5::PhoneNumber &left, const lr5::PhoneNumber &right) {
 	using namespace lr5::phoneNumber;
 	return getNumber(left) < getNumber(right);
 }
+
+bool operator==(const lr5::PhoneNumber &left, const lr5::PhoneNumber &right) {
+	using namespace lr5::phoneNumber;
+	return getNumber(left) == getNumber(right);
+}

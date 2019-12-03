@@ -7,15 +7,21 @@
 
 namespace lr5 {
     struct Employee {
-        std::string name;
-        std::string companyName;
+        std::string name = "";
+        std::string companyName = "";
         PhoneNumber phone;
 
-        Double salary;
+        Double salary = 0;
+    };
+
+
+    struct EmployeeNode {
+        Employee data;
+        EmployeeNode *next = nullptr;
     };
 
     struct EmployeeList {
-        Employee *next = nullptr;
+        EmployeeNode *head = nullptr;
         int length = 0;
     };
 }
