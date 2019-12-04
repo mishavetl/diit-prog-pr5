@@ -14,7 +14,6 @@ namespace lr5 {
         Double salary = 0;
     };
 
-
     struct EmployeeNode {
         Employee data;
         EmployeeNode *next = nullptr;

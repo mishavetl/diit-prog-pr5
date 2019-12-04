@@ -11,5 +11,5 @@ namespace lr5 {
 bool operator<(const lr5::PhoneNumber &left, const lr5::PhoneNumber &right);
 bool operator==(const lr5::PhoneNumber &left, const lr5::PhoneNumber &right);
 
-// std::istream &operator>>(std::istream &stream, lr5::PhoneNumber &employee);
-// std::ostream &operator<<(std::ostream &stream, const lr5::PhoneNumber &employee);
+std::istream &operator>>(std::istream &stream, lr5::PhoneNumber &phoneNumber);
+std::ostream &operator<<(std::ostream &stream, const lr5::PhoneNumber &phoneNumber);
