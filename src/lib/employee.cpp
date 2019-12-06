@@ -38,6 +38,7 @@ lr5::EmployeeNode *lr5::employeeList::insert(lr5::EmployeeList &list, lr5::Emplo
 		list.head = node;
 		if (prev) {
 			list.head->next = prev;
+			prev->prev = list.head;
 		}
 	} else {
 		for (int i = 1; i < index; ++i) {
@@ -45,13 +46,68 @@ lr5::EmployeeNode *lr5::employeeList::insert(lr5::EmployeeList &list, lr5::Emplo
 		}
 		if (prev->next) {
 			node->next = prev->next;
+			node->next->prev = node;
 		}
 		prev->next = node;
+		node->prev = prev;
 	}
 
 	++list.length;
 
 	return node;
+}
+
+void lr5::employeeList::sortByPhone(lr5::EmployeeList &list) {
+	using namespace lr5;
+	EmployeeNode *node1 = list.head;
+    while (node1) {
+        EmployeeNode *node2 = node1->next;
+        while (node2) {
+            if (node2->data.phone < node1->data.phone) {
+                EmployeeNode *t = node1->next;
+                node1->next = node2->next;
+                node2->next = t;
+
+                t = node1->prev;
+                node1->prev = node2->prev;
+                node2->prev = t;
+
+                if (node1->prev == node1) {
+                    node1->prev = node2;
+                }
+
+                if (node2->next == node2) {
+                    node2->next = node1;
+                }
+
+                if (node2->next) {
+                    node2->next->prev = node2;
+                }
+
+                if (node1->next) {
+                    node1->next->prev = node1;
+                }
+
+                if (node2->prev) {
+                    node2->prev->next = node2;
+                }
+
+                if (node1->prev) {
+                    node1->prev->next = node1;
+                }
+
+                if (node1 == list.head) {
+                	list.head = node2;
+                }
+
+                t = node1;
+                node1 = node2;
+                node2 = t;
+            }
+            node2 = node2->next;
+        }
+        node1 = node1->next;
+    }
 }
 
 bool operator<(const lr5::Employee &left, const lr5::Employee &right) {

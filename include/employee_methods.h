@@ -6,6 +6,7 @@ namespace lr5 {
 	namespace employeeList {
         void destruct(EmployeeList &list);
         EmployeeNode *insert(EmployeeList &list, Employee &employee, int index = 0);
+        void sortByPhone(lr5::EmployeeList &list);
     }
 }
 

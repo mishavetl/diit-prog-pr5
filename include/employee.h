@@ -16,6 +16,7 @@ namespace lr5 {
 
     struct EmployeeNode {
         Employee data;
+        EmployeeNode *prev = nullptr;
         EmployeeNode *next = nullptr;
     };
 

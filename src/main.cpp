@@ -85,43 +85,7 @@ int main() {
                 employeeList::insert(newList, cur->data, newList.length);
                 cur = cur->next;
             }
-            EmployeeNode *node1 = newList.head, *node1_prev = nullptr;
-            while (node1) {
-                EmployeeNode *node2 = node1->next, *node2_prev = node1;
-                while (node2) {
-                    if (node2->data.phone < node1->data.phone) {
-                        std::cout << node2->data << node1->data << std::endl;
-
-                        EmployeeNode *node1_next = node1->next;
-                        node1->next = node2->next;
-
-                        node2->next = node1_next;
-                        if (node1_next == node2) {
-                            node2->next = node1;
-                        }
-
-                        if (node1_prev) {
-                            node1_prev->next = node2;
-                        }
-                        if (node2_prev) {
-                            if (node2_prev == node1) {
-                                node2_prev->next = node1->next;
-                            } else {
-                                node2_prev->next = node1;
-                            }
-                        }
-
-                        EmployeeNode *t = node1;
-                        node1 = node2;
-                        node2 = t;
-
-                    }
-                    node2_prev = node2;
-                    node2 = node2->next;
-                }
-                node1_prev = node1;
-                node1 = node1->next;
-            }
+            employeeList::sortByPhone(newList);
             std::cout << newList;
             employeeList::destruct(newList);
         } else if (command == "exit" || command == "7") {
